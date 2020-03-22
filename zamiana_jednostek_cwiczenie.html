@@ -1,0 +1,66 @@
+<!--
+    Napisz skrypt, który poprosi o podanie pola powierzchni w metrach kwadratowych, a następnie w zależności od kliknięcia w odpowiedni przycisk przeliczy pole na ary, hektary lub akry.
+-->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+    <meta charset="utf-8">
+    <title> Zamiana jednostek  </title>
+
+</head>
+<body>
+
+    <!--input-->
+        Podaj pole powierzchni w metrach kwadratowych. <br>
+        <input type="text" id='input1'> <br> 
+
+        <button onclick="ary()"> Ary </button>
+        <button onclick="hektary()"> Hektary </button>
+        <button onclick="akry()"> Akry </button>
+
+    <!-- output -->
+
+    <div id="div1">
+        Wynik ukaże się tutaj.
+    </div>
+
+    <!-- skrypt -->
+
+    <script type="text/javascript">
+    
+        // Funkcje pomocnicze
+        function repair_number(x){
+            if(x < 0) return `(${x})`
+            else return x
+        }
+
+        function napisz(content){
+            return document.getElementById('div1').innerHTML = content
+        }
+
+        function getm2(){
+            const m2 = document.getElementById('input1').value
+            return m2
+        }
+
+    // Funkcje główne
+        function akry(){
+            const wynik = getm2()/4046.8564224
+            return napisz(repair_number(wynik))
+        }
+
+        function hektary(){
+            const wynik = getm2()/10000
+            return napisz(repair_number(wynik))
+        }
+
+        function ary(){
+            const wynik = getm2()/100
+            return napisz(repair_number(wynik))
+        }
+
+    </script>
+
+</body>
+</html>
