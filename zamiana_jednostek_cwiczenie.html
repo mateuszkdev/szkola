@@ -30,19 +30,23 @@
     <script type="text/javascript">
     
         // Funkcje pomocnicze
-        function repair_number(x){
-            if(x < 0) return `(${x})`
-            else return x
-        }
 
         function napisz(content){
             return document.getElementById('div1').innerHTML = content
+        }
+
+        function repair_number(x){
+            x = parseFloat(x)
+            if(isNaN(x)) return napisz("<b> Podana wartość w metrach kwadratowych nie jest liczbą. </b>")
+            if(x < 0) return `(${x})`
+            else return x
         }
 
         function getm2(){
             const m2 = document.getElementById('input1').value
             return m2
         }
+
 
     // Funkcje główne
         function akry(){
