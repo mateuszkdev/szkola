@@ -1,0 +1,107 @@
+<!--
+    Napisz skrypt, który poprosi o podanie trzech liczb, a następnie obliczy miejsca zerowe funkcji kwadratowej i wyświetli wynik na ekranie. Jeśli pierwsza liczba będzie równa zero, program na wyświetlić informację że funkcja nie jest kwadratowa. Jeśli delta wyjdzie ujemna, ma się pojawić napis "brak rozwiązania". Użyj trech pól numerycznych i jednego przycisku.
+-->
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+    <meta charset="utf-8">
+    <title> Funkcja kwadratowa? </title>
+
+</head>
+
+    <!-- input -->
+        Podaj pierwszą liczbę <br>
+        <input type="number" id="input1"> <br><br>
+
+        Podaj drugą liczbę <br>
+        <input type="number" id="input2"> <br><br>
+
+        Podaj trzecią liczbę <br>
+        <input type="number" id="input3"> <br>
+
+        <button onclick="main()"> Oblicz </button> <br><br>
+        
+    <!-- output -->
+        <div id="div1">
+            Wynik pokaże się tutaj.
+        </div>
+
+    <!-- skrypt -->
+        <script type="text/javascript">
+
+            /* Funkcje pomocnicze */
+            function repair_number(x){
+                if(x < 0) return `(${x})`
+                else return x 
+            }
+
+            function gid(content){
+                return document.getElementById(content).value
+            }
+
+            function napisz(content){
+                return document.getElementById('div1').innerHTML = content
+            }
+
+            /* Główna funkcja */
+            function main(){
+
+            let total = ''
+
+            let n = {
+                n1: gid('input1'),
+                n2: gid('input2'),
+                n3: gid('input3')
+            }
+
+            let liczba = {
+                a: parseFloat(n.n1),
+                b: parseFloat(n.n2),
+                c: parseFloat(n.n3)
+            }
+
+            if(isNaN(liczba.a) || isNaN(liczba.b) || isNaN(liczba.c)) return napisz("Błąd: Podane liczby nie są liczbami.  'NaN - Not a Number'. Prosze podać liczby.")
+
+            let dzialania = {
+                delta: Math.pow(liczba.b, 2) - 4 * liczba.a * liczba.c,
+                b2: Math.pow(liczba.b, 2),
+                ac: liczba.a * liczba.b,
+                ac4: 4*(liczba.a*liczba.b)
+            }
+            total += `Równanie: ${repair_number(liczba.a)}x<sup>2</sup> + ${repair_number(liczba.b)}x + ${repair_number(liczba.c)} = 0`
+            
+
+            if(liczba.a === 0) return napisz(`${total} <br> <b>Funkcja nie jest kwadratowa.</b>`)
+            total += `<br> Delta: ${repair_number(dzialania.delta)}`
+            let pdelta = Math.pow(dzialania.delta, 1/2)
+
+                if(dzialania.delta < 1){
+
+                    if(dzialania.delta == 0){
+
+                        const x0 = -liczba.b/(2*liczba.a)
+                        return napisz(`${total} <br> Delta jest mniejsza od zera, posiada jedno miejsce zerowe i jest ono równe: ${repair_number(x0)}`)
+
+                    } else {
+
+                        return napisz(`${total} <br> Delta jest ujemna, nie posiada miejsc zerowch.`)
+
+                    }
+                } else{
+
+                        const x = {
+                            x1: (-liczba.b-pdelta)/(2*liczba.a),
+                            x2: (-liczba.b+pdelta)/(2*liczba.a)
+                        }
+
+                        total += `<br> Delta jest wieksza od zera. Posiada dwa miejsca zerowe: <br> x<sub>1</sub> = ${repair_number(x.x1)} <br> x<sub>2</sub> = ${repair_number(x.x2)}`
+                        return napisz(total)
+                }
+  
+        
+        }
+        </script>
+
+</html>
