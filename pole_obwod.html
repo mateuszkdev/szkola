@@ -1,0 +1,140 @@
+<!-- 
+    Napisz skrypt, który poprosi o podanie odpowiednich wymiarów figur geometrycznych, a następnie po wybraniu z listy rozwijanej odpowiedniej figury obliczy pole i obwód tej figury geometrycznej, a wynik wyświetli na ekranie pod formularzem.
+-->
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title> Pole </title>
+
+</head>
+<body>
+
+    <!-- wybieranie -->
+    <div id="m">
+        <form name="form">
+            Wybierz figure
+            <select id="wyb">
+                <option>Kwadrat</option>
+                <option>Prostokąt</option>
+                <option>Trójkąt</option>
+            </select>
+        </form>
+        <button onclick="main()"> Wybierz </button>
+    </div>
+    <!-- output -->
+    <div id="div1">
+
+    </div>
+
+    <!-- skrypt -->
+    <script type="text/javascript">
+
+        const elementy = {
+            form: `<form name="form">`,
+            formend: `</form>`,
+            selectstart: `<select id="wyb">`,
+            selectpole: `<option>Pole</option>`,
+            selectobw: `<option>Obwód</option>`,
+            selectend: `</select>`
+        }
+
+        // funkcje pomocnicze
+        function napisz(content){
+            return document.getElementById('div1').innerHTML = content
+        }
+
+        function repait_number(x){
+            if(x < 0) return `(${x})`
+            else return x
+        }
+
+        function gm(content){
+            return document.getElementById('m').innerHTML = content
+        }
+
+        //funkcje obliczeb
+
+        function obliczkwadrat(){
+            const a = document.getElementById('a').value
+            let pole = a*a
+            let obwod = 4*a
+            pole = repait_number(pole)
+            obwod = repait_number(obwod)
+            const total = `Pole: ${pole} <br> Obwód: ${obwod}`
+            return napisz(total)
+        }
+
+        function obliczprostokat(){
+            const a = document.getElementById('a').value
+            const b = document.getElementById('b').value
+            let pole = a*b
+            let obwod = (2*a)+(2*b)
+            pole = repait_number(pole)
+            obwod = repait_number(obwod)
+            const total = `Pole: ${pole} <br> Obwód: ${obwod}`
+            return napisz(total)
+        }
+
+        function oblicztrojkat(){
+            const a = document.getElementById('a').value
+            const h = document.getElementById('h').value
+            let pole = (1/2)*a*h
+            let obwod = 3*a
+            pole = repait_number(pole)
+            obwod = repait_number(obwod)
+            const total = `Pole: ${pole} <br> Obwód: ${obwod}`
+            return napisz(total)
+        }
+
+        // funkcje wybor
+        function kwadrat(){
+            gm([
+                elementy.form,
+                `Podaj bok a`,
+                `<input type="number" id="a">`,
+                elementy.formend,
+                `<button onclick="obliczkwadrat()"> Oblicz </button>`,
+            ].join('<br>'))
+        }
+
+        function prostokat(){
+            gm([
+                elementy.form,
+                `Podaj bok a`,
+                `<input type="number" id="a">`,
+                `Podaj bok b`,
+                `<input type="number" id="b">`,
+                elementy.formend,
+                `<button onclick="obliczprostokat()"> Oblicz </button>`,
+            ].join('<br>'))
+        }
+
+        function trojkat(){
+            gm([
+                elementy.form,
+                `Podaj bok a`,
+                `<input type="number" id="a">`,
+                `Podaj podstawe`,
+                `<input type="number" id="h">`,
+                elementy.formend,
+                `<button onclick="oblicztrojkat()"> Oblicz </button>`,
+            ].join('<br>'))
+        }
+        
+
+        // funkcja handling
+        function main(){
+            const wyb = document.getElementById('wyb').value
+            if(wyb == 'Kwadrat') return kwadrat()
+            else if(wyb == 'Prostokąt') return prostokat()
+            else if(wyb == 'Trójkąt') return trojkat()
+            else return
+        }
+
+    </script>
+
+</body>
+</html>
