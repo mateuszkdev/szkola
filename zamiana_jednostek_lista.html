@@ -43,7 +43,9 @@
         }
 
         function getm2(){
-            return document.getElementById("input1").value
+            let number = document.getElementById("input1").value
+            number = parseFloat(number)
+            if(isNaN(number)) return napisz('Podana liczba nie jest liczna. blad: NaN')
         }
 
         function gl(){
