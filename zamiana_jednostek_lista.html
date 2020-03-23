@@ -1,0 +1,79 @@
+<!-- 
+    Napisz skrypt, który poprosi o podanie pola powierzchni w metrach kwadratowych, a następnie po wybraniu przez użytkownika odpowiedniej jednostki z listy rozwijanej i kliknięciu w przycisk z napisem „Oblicz”, zamieni pole na ary, hektary lub akry. Wynik ma zostać wyświetlony pod formularzem.
+-->
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title> Zamiany v2 </title>
+
+
+</head>
+<body>
+
+    <!-- input -->
+    <form name="form">
+        Podaj powierzchnie w metrach.
+        <input type="number" id="input1"> 
+        <select id="wyb">
+            <option>Ary</option>
+            <option>Hektary</option>
+            <option>Akry</option>
+        </select>
+    </form>
+    <button onclick="main()"> Oblicz </button>
+
+    <!-- output -->
+    <div id="div1">
+        Wynik pojawi sie tutaj.
+    </div>
+
+    <!-- skrypt -->
+    <script type="text/javascript">
+        // funkcje pomocnicze
+        function napisz(content){
+            return document.getElementById('div1').innerHTML = content
+        }
+
+        function repair_number(x){
+            if(x < 0) return `(${x})`
+            else return x
+        }
+
+        function getm2(){
+            return document.getElementById("input1").value
+        }
+
+        function gl(){
+            return document.getElementById("wyb").value
+        }
+
+        //funkcje główne
+        function akry(){
+            const wynik = getm2()/4046.8564224
+            return napisz(repair_number(wynik))
+        }
+
+        function hektary(){
+            const wynik = getm2()/10000
+            return napisz(repair_number(wynik))
+        }
+
+        function ary(){
+            const wynik = getm2()/100
+            return napisz(repair_number(wynik))
+        }
+        
+        //funkcja main
+        function main(){
+            if(gl() == 'Akry' ) return akry()
+            else if (gl() == 'Hektary') return hektary()
+            else if (gl() == 'Ary') return ary()
+        }
+
+    </script>
+
+</body>
+</html>
