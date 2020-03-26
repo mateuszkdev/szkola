@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+
+
+    <script type="text/javascript">
+    
+        let wyb = parseFloat(prompt("Podaj długosc w cm"));
+
+        let metry = wyb/100;
+        let mila = metry/1609.344;
+        let km = metry/1000;
+        let yard = metry/0.91;
+
+        document.write([
+             `Mile: ${mila}`,
+             `Kilometry: ${km}`,
+             `Yardy: ${yard}`,
+        ].join("<br>"))
+    
+    
+    
+    </script>
+
+
+
+</body>
+
+</html>
