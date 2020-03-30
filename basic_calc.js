@@ -8,7 +8,7 @@ function repair_number(x){
 }
 
 function czyNaN(x){
-    if(isNaN(x)) return 'Podana wartość nie jest liczbą.'
+    if(isNaN(x)) return document.getElementById('wynik').innerHTML = 'Jedna z podanych wartości nie jest liczbą!'
     else return x
 }
 
@@ -43,7 +43,8 @@ async function dodaj(){
     numbers.a = toFloat(numbers.a)
     numbers.b = toFloat(numbers.b)
 
-    const wynik = numbers.a + numbers.b
+    let  wynik = numbers.a + numbers.b
+    if(isNaN(wynik)) return document.getElementById('wynik').innerHTML = 'Jedna z podanych wartości nie jest liczbą!'
     const total = `Wynik dodawania liczb <br> ${repair_number(numbers.a)} + ${repair_number(numbers.b)} = <b> ${repair_number(wynik)} </b>`
     napisz(total)
 }
@@ -55,7 +56,8 @@ async function odejmij(){
     numbers.a = toFloat(numbers.a)
     numbers.b = toFloat(numbers.b)
 
-    const wynik = numbers.a - numbers.b
+    let wynik = numbers.a - numbers.b
+    if(isNaN(wynik)) return document.getElementById('wynik').innerHTML = 'Jedna z podanych wartości nie jest liczbą!'
     const total = `Wynik odejmowania liczb <br> ${repair_number(numbers.a)} - ${repair_number(numbers.b)} = <b> ${repair_number(wynik)} </b>`
     napisz(total)
 
@@ -68,7 +70,8 @@ async function mnoz(){
     numbers.a = toFloat(numbers.a)
     numbers.b = toFloat(numbers.b)
 
-    const wynik = numbers.a * numbers.b
+    let wynik = numbers.a * numbers.b
+    if(isNaN(wynik)) return document.getElementById('wynik').innerHTML = 'Jedna z podanych wartości nie jest liczbą!'
     const total = `Wynik mnożenia liczb <br> ${repair_number(numbers.a)} * ${repair_number(numbers.b)} = <b> ${repair_number(wynik)} </b>`
     napisz(total)
 
@@ -81,7 +84,8 @@ async function dziel(){
     numbers.a = toFloat(numbers.a)
     numbers.b = isZero(toFloat(numbers.b))
 
-    const wynik = numbers.a / numbers.b
+    let wynik = numbers.a / numbers.b
+    if(isNaN(wynik)) return document.getElementById('wynik').innerHTML = 'Jedna z podanych wartości nie jest liczbą!'
     const total = `Wynik dzielenia liczba <br> ${repair_number(numbers.a)} : ${repair_number(numbers.b)} = <br> ${repair_number(wynik)} </b>`
     napisz(total)
 
