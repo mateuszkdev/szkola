@@ -1,0 +1,54 @@
+<!-- ( ! BEZ ES6 ! ) -->
+
+<html lang="PL">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Sprawdzanie liczby</title>
+
+    </head>
+
+    <body>
+
+        <!--INPUT-->
+        <input type="text" id="input1">
+        <button onclick="main()">Sprawdź</button>
+
+        <!--OUTPUT-->
+        <p id="p1"></p>
+
+        <!--SKRYPT-->
+        <script type="text/javascript">
+        
+            function main(){
+
+                var liczba = document.getElementById("input1").value;
+                var p = document.getElementById("p1");
+                var liczba1 = Number(liczba);
+
+                if(liczba == 0){
+                    
+                    p.innerHTML = "Liczba jest zerem."
+
+                } else if(liczba > 0){
+                    
+                    p.innerHTML = "Liczba jest dodatnia."
+
+                } else if(liczba < 0){
+                    
+                    p.innerHTML = "Liczba jest ujemna."
+
+                } else {
+                    
+                    p.innerHTML = "To nie jest liczba."
+
+                }
+
+            }
+
+        </script>
+
+    </body>
+
+</html>
