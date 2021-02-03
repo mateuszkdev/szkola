@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+
+
+    <script type="text/javascript">
+    
+        let a = parseFloat(prompt("Podaj a"));
+        let b = parseFloat(prompt("Podaj b"));
+        let c = parseFloat(prompt("Podaj c"));
+
+        let delta = Math.pow(b,2)-4*a*c;
+        let pdelta = Math.pow(1,delta/2);
+        
+        if (a == 0 ) {
+             document.write("Wartość a nie moze byc równa 0");
+         } else if (delta > 0){
+            let x1 = (-b-pdelta)/(2*a);
+            let x2 = (-b+pdelta)/(2*a);
+
+            document.write([
+                `Delta wieksza od 0 i równa = ${delta}`,
+                `Są więc dwa miejsca zerowe x1 i x2 i równe są:`,
+                ` x1 = ${x1}`,
+                ` x2 = ${x2}`,
+            ].join("<br>"));
+        } else if (delta == 0){
+            let x0 = (-b)/(2*a);
+
+            document.write(`Delta = ${delta}, i jest = 0 a więc x0 = ${x0}`);
+        } else if( delta < 0) {
+            
+            document.write("Delta jest mniejsca od zera, nie ma rozwiązania")
+
+        } else {
+            console.error("Błąd, wartość delty nie jest liczbą");
+        }
+    
+    
+    
+    </script>
+
+
+
+</body>
+
+</html>

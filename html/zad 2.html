@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+
+
+    <script type="text/javascript">
+    
+    
+        let liczba = parseFloat(prompt("Podaj liczbe"));
+        let wyb = prompt("Podaj co chcesz zrobicc ( potega , pierwiastek")
+
+        switch(wyb){
+            case "potega": 
+                    let pot = parseFloat(prompt("Podaj potege"));
+
+                    let wynik1 = Math.pow(liczba, pot);
+
+                    document.write([
+                        `Potega liczby ${liczba} do potegi ${pot} =`,
+                        `= ${wynik1}`,
+                    ].join("<br>"))
+                break;
+
+            case "pierwiastek":
+
+                    let pier = parseFloat(prompt("Podaj jaki pierwiastek"));
+
+                    let wynik2 = Math.pow(1, liczba/pier);
+
+                    document.write([
+                        `Pierwiastek ${pier} stopnia z liczby ${liczba} wynosi =`,
+                        ` = ${wynik2}`,
+                    ].join("<br>"));
+
+
+                break;
+
+
+            default: "Podaj poprawny wybór, (potega lub pierwiastek)";
+        }
+    
+    
+    </script>
+
+
+
+</body>
+
+</html>

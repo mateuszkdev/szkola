@@ -1,1 +1,2 @@
-# szkola
+# Zadania z szkoły
+## Nic specjalnego XD
